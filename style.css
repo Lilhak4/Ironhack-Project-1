@@ -54,7 +54,6 @@ body {
   background-position: center;
 }
 
-/* Timer */
 
 #header-left {
   display: flex;
@@ -85,22 +84,37 @@ body {
 }
 
 h3 {
-  font-size: 2em;
+  font-size: 2.5em;
   font-family: 'Russo One', sans-serif;
   color: whitesmoke;
 
 }
 
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 #btn-start {
   height: 75px;
   width: 125px;
-  margin-top: 300px;
+  margin-top: 0px;
   font-size: 1.75em;
   border-radius: 20%;
   background-color: azure;
   font-family: 'Russo One', sans-serif;
   border: 1px rgb(174, 177, 183) solid;
   animation: pulse 3s infinite;
+  margin-top: 100px;
 }
 
 @keyframes pulse {
@@ -112,14 +126,20 @@ h3 {
   }
 }
 
+
+#gif-win img {
+  height: 400px;
+  width: 650px;
+}
+
 .hidden {
-  opacity: 0.005;
+  opacity: 0.01;
 }
 
 #btn-restart {
   height: 75px;
   width: 125px;
-  margin-top: 300px;
+  margin-top: 0px;
   font-size: 1.75em;
   border-radius: 20%;
   background-color: indianred;

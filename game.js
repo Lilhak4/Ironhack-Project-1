@@ -4,7 +4,7 @@ function Game(cb) {
   this.callback = cb;
 
   this.turns = 7;
-  this.timer = 10;
+  this.timer = 60;
   this.isEnded = false;
   this.cards = null;
   this.timerNode = document.getElementById('header-right');

@@ -9,7 +9,7 @@ function main() {
   var removeDivs = null;
   var restartButton = null;
   var resultText = null;
-
+  var gif = null;
   // ---------- SPLASH SCREEN ---------- //
 
   function buildSplash() {
@@ -18,6 +18,7 @@ function main() {
     button.setAttribute('id', 'btn-start');
     button.innerText = 'Start!!!';
     container.appendChild(button);
+    
 
     button.addEventListener('click', handleStartClick);
   }  
@@ -26,8 +27,19 @@ function main() {
   function handleStartClick() {
     button.removeEventListener('click', handleStartClick);
     button.remove();
+    container = document.getElementById('gif-win');
+    container.remove();
     buildGame();
   }
+
+  // function keepBuilding() {
+  //   container = document.getElementById('gif-win');
+  //   img = document.createElement('img');
+  //   img.setAttribute('', '/home/lilhak4/2018-06/Project-1/Project/Ironhack-Project-1/images/giphy.gif');
+  //   container.appendChild(img);
+
+  //   buildGame();
+  // }
 
   // ---------- GAME SCREEN ---------- //
 
@@ -67,12 +79,21 @@ function main() {
   function buildGameOver(win) {
     resultText = document.createElement('h3')
     if (win) {
-      resultText.innerText = 'Congratulations! You won!'
-
-    } else {
+      resultText.innerText = 'Congratulations! You are a  winner!'
+     } else {
       resultText.innerText = 'So sorry, you lost!'
     }
-
+    
+    resultGif = document.createElement('img')
+    if (win) {
+      var gif = document.getElementById('gif-win');
+      var img = document.createElement('img');
+      img.setAttribute('src', '/home/lilhak4/2018-06/Project-1/Project/Ironhack-Project-1/images/giphy.gif');
+      gif.appendChild(img);
+    } else {
+    
+    }
+    
     document.getElementById('main-container').remove();
     container = document.createElement('div');
     container.setAttribute('id', 'main-container');
