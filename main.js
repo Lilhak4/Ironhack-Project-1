@@ -8,6 +8,7 @@ function main() {
   var grid = null;
   var removeDivs = null;
   var restartButton = null;
+  var resultText = null;
 
   // ---------- SPLASH SCREEN ---------- //
 
@@ -43,6 +44,8 @@ function main() {
     cardsElements.forEach(function (card) {
       card.addEventListener('click', handleCardClick);
     });
+
+
     // event.currentTarget.card;
   }
 
@@ -55,13 +58,21 @@ function main() {
   
   // ---------- GAME OVER SCREEN ---------- //
   //If webcam not possible, make end screen a gif of a loss, if win, gif of a winner.
-  function endGame(){
+  function endGame(win){
     console.log('ended')
     game = null;
-    buildGameOver();
+    buildGameOver(win);
   }
 
-  function buildGameOver() {
+  function buildGameOver(win) {
+    resultText = document.createElement('h3')
+    if (win) {
+      resultText.innerText = 'Congratulations! You won!'
+
+    } else {
+      resultText.innerText = 'So sorry, you lost!'
+    }
+
     document.getElementById('main-container').remove();
     container = document.createElement('div');
     container.setAttribute('id', 'main-container');
@@ -69,26 +80,19 @@ function main() {
     restartButton = document.createElement('button');
     restartButton.setAttribute('id', 'btn-restart');
     restartButton.innerText = 'Restart';
+    container.appendChild(resultText)
     container.appendChild(restartButton)
     document.body.appendChild(container);
     
-    button.addEventListener('click', restartButton);
-    restartGame();
+    restartButton.addEventListener('click', handleRestartClick);
   }
 
-  function restartGame() {
-    button.removeEventListener('click', restartButton);
-    button.remove();
-    
-
-
+  function handleRestartClick () {
+    restartButton.removeEventListener('click', handleRestartClick);
+    restartButton.remove();
+    resultText.remove();
+    buildSplash();
   }
-
-  // function handleRestartClick {
-  //   restartButton.removeEventListener('click', restartButton);
-  //   restartButton.remove();
-  //   buildSplash();
-  // }
 
 buildSplash();
 }

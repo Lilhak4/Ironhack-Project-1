@@ -10,18 +10,25 @@ function Cards() {
 Cards.prototype.buildGrid = function() {
   var container = document.getElementById('main-container');
   var cards = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10]
-  var shuffledArray = this.shuffle(cards); // = shuffle(cards)
+  //var shuffledArray = 
 
   for (var ix = 0; ix < cards.length; ix++) {
     var card = document.createElement('div');
-    var id = "card-" + shuffledArray[ix]
+    var id = "card-" + cards[ix]
     card.setAttribute('id', id)
     card.classList.add('hidden')
-    card.innerText = shuffledArray[ix]; 
-    container.appendChild(card);
-  
+    card.innerText = cards[ix];
+    card.style.backgroundImage = `url(images/memory${ix}.svg)`
+    card.classList.add('card');
     card.addEventListener('click', this.handleCardClick);
+    cards[ix] = card;
   }
+
+  this.shuffle(cards);
+
+  cards.forEach(function(card) {
+    container.appendChild(card);
+  })
 }
 
 Cards.prototype.checkIfPair = function() {

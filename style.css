@@ -29,7 +29,8 @@ body {
   justify-content: space-around;
   width: 25%;
   height: 20%;
-  border: 1px rgb(0, 0, 0) dotted;
+  border: 10px rgb(0, 0, 0) solid;
+  background-image: url('http://hwalls.com/upload/metal_wallpaper4859.jpg');
 }
 
 #main-header {
@@ -40,6 +41,17 @@ body {
   background: rgb(174, 177, 183);
   border-bottom: 1px whitesmoke solid;
   border-block-end: 50px;
+}
+
+#header-right {
+  color: whitesmoke;
+  font-size: 1.65em;
+}
+
+.card {
+  background-size: 80% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Timer */
@@ -62,15 +74,22 @@ body {
   justify-content: center;
   flex-grow: 1;
 }
-/* Font: make it have sharper edges */
 
  h1 {
   font-size: 4em;
   color: whitesmoke;
   font-family: 'Russo One', sans-serif;
   text-shadow: 5px 5px 1px black;
+  animation: popout 3s ease;
+  -webkit-animation: popout 3s ease;
 }
-/* Animations: make button pop out, change color slowly */
+
+h3 {
+  font-size: 2em;
+  font-family: 'Russo One', sans-serif;
+  color: whitesmoke;
+
+}
 
 #btn-start {
   height: 75px;
@@ -94,9 +113,8 @@ body {
 }
 
 .hidden {
-  opacity: 0.05;
+  opacity: 0.005;
 }
-/* Animations: make button pop out, change color slowly */
 
 #btn-restart {
   height: 75px;

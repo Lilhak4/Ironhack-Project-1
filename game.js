@@ -4,9 +4,12 @@ function Game(cb) {
   this.callback = cb;
 
   this.turns = 7;
-  this.timer = 3;
+  this.timer = 10;
   this.isEnded = false;
   this.cards = null;
+  this.timerNode = document.getElementById('header-right');
+  this.win = false;
+
 }
 
 Game.prototype.start = function() {
@@ -29,6 +32,7 @@ Game.prototype.toggleClickedCard = function(card) {
 
 Game.prototype.saveClickedCard = function(card) {
   this.cards.pickCard(card)
+  console.log(this.cards.pairGuessed)
 }
 
 //----------TIMER----------//
@@ -38,19 +42,27 @@ Game.prototype.time = function () {
   // time = 60;
   var self = this
   self.intervalId = setInterval(function () {
-  console.log(self.timer)
+    self.checkWin()
     if (self.isEnded === true){
       clearInterval(self.intervalId)
-      self.callback();
+      self.callback(self.win);
     }
     // var secondsTimer = document.getElementById('timer-count').innerText = self.time;
     self.timer -= 1;
+    self.timerNode.innerText = self.timer;
     if (self.timer <= 0) {
       self.isEnded = true;
+      self.timerNode.innerText = '';
       console.log(self.isEnded); 
       // self.timer = 60
       // self.inputWord();
     }
   }, 1000)
 
+  Game.prototype.checkWin = function() {
+    if (this.cards.pairGuessed === 10) {
+      this.win = true;
+      this.isEnded = true;
+    }
+  }
 }
