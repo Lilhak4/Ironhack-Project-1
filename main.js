@@ -62,24 +62,33 @@ function main() {
   }
 
   function buildGameOver() {
-    for (var ix = 0; ix < cards.length; ix++) {
-      removeDivs = document.querySelector('')
-      removeDivs.remove();
-    }
+    document.getElementById('main-container').remove();
+    container = document.createElement('div');
+    container.setAttribute('id', 'main-container');
     
-    // buildContainer = getElementById('main-container');
-    // restartButton = document.createElement('button');
-    // restartButton.setAttribute('id', 'btn-restart');
-    // restartButton.innerText = 'Restart';
-
-    // button.addEventListener('click', restartButton);
+    restartButton = document.createElement('button');
+    restartButton.setAttribute('id', 'btn-restart');
+    restartButton.innerText = 'Restart';
+    container.appendChild(restartButton)
+    document.body.appendChild(container);
+    
+    button.addEventListener('click', restartButton);
+    restartGame();
   }
 
-  function handleRestartClick {
-    restartButton.removeEventListener('click', restartButton);
-    restartButton.remove();
-    buildSplash();
+  function restartGame() {
+    button.removeEventListener('click', restartButton);
+    button.remove();
+    
+
+
   }
+
+  // function handleRestartClick {
+  //   restartButton.removeEventListener('click', restartButton);
+  //   restartButton.remove();
+  //   buildSplash();
+  // }
 
 buildSplash();
 }
