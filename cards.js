@@ -10,7 +10,7 @@ function Cards() {
 Cards.prototype.buildGrid = function() {
   var container = document.getElementById('main-container');
   var cards = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10]
-  var shuffledArray = cards; // = shuffle(cards)
+  var shuffledArray = this.shuffle(cards); // = shuffle(cards)
 
   for (var ix = 0; ix < cards.length; ix++) {
     var card = document.createElement('div');
@@ -74,7 +74,9 @@ Cards.prototype.resetPairsClicked = function() {
   
 Cards.prototype.handleWrongPair = function() {
   this.pickedCards.forEach(function (card) {
-    card.classList.toggle('hidden');
+    setTimeout(function (){
+      card.classList.toggle('hidden');
+    }, 1000)
 
   });
 }

@@ -1,6 +1,8 @@
 'use strict'
 
-function Game() {
+function Game(cb) {
+  this.callback = cb;
+
   this.turns = 7;
   this.timer = 60;
   this.isEnded = false;
@@ -10,6 +12,7 @@ function Game() {
 Game.prototype.start = function() {
   this.cards = new Cards();
   this.cards.buildGrid();
+  this.time()
 }
 
 Game.prototype.toggleClickedCard = function(card) {  
@@ -29,16 +32,25 @@ Game.prototype.saveClickedCard = function(card) {
 }
 
 //----------TIMER----------//
+//starts when click on a div. when hits zero, goes to game over screen 
 
-// Game.prototype.timer = function () {
-//   // time = 60;
-//   var self = this
-//   self.intervalId = setInterval(function () {
-//     var secondsTimer = document.getElementById('timer-count').innerText = self.time;
-//     self.time -= 1;
-//     if (self.time < 0) {
-//       clearInterval(self.intervalId);
-//       self.time = 60
-//       self.inputWord();
-//     }
-//   }, 1000)
+Game.prototype.time = function () {
+  // time = 60;
+  var self = this
+  self.intervalId = setInterval(function () {
+  console.log(self.timer)
+    if (self.isEnded === true){
+      clearInterval(self.intervalId)
+      self.callback();
+    }
+    // var secondsTimer = document.getElementById('timer-count').innerText = self.time;
+    self.timer -= 1;
+    if (self.timer <= 0) {
+      self.isEnded = true;
+      console.log(self.isEnded); 
+      // self.timer = 60
+      // self.inputWord();
+    }
+  }, 1000)
+
+}

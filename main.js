@@ -6,6 +6,8 @@ function main() {
   var button = null;
   var game = null;
   var grid = null;
+  var removeDivs = null;
+  var restartButton = null;
 
   // ---------- SPLASH SCREEN ---------- //
 
@@ -35,7 +37,7 @@ function main() {
   
 
   function playGame() {
-    game = new Game();
+    game = new Game(endGame);
     game.start();
     var cardsElements = document.querySelectorAll('#main-container div');
     cardsElements.forEach(function (card) {
@@ -51,9 +53,33 @@ function main() {
   }
 
   
-  // ---------- AME OVER SCREEN ---------- //
+  // ---------- GAME OVER SCREEN ---------- //
+  //If webcam not possible, make end screen a gif of a loss, if win, gif of a winner.
+  function endGame(){
+    console.log('ended')
+    game = null;
+    buildGameOver();
+  }
 
-  
+  function buildGameOver() {
+    for (var ix = 0; ix < cards.length; ix++) {
+      removeDivs = document.querySelector('')
+      removeDivs.remove();
+    }
+    
+    // buildContainer = getElementById('main-container');
+    // restartButton = document.createElement('button');
+    // restartButton.setAttribute('id', 'btn-restart');
+    // restartButton.innerText = 'Restart';
+
+    // button.addEventListener('click', restartButton);
+  }
+
+  function handleRestartClick {
+    restartButton.removeEventListener('click', restartButton);
+    restartButton.remove();
+    buildSplash();
+  }
 
 buildSplash();
 }

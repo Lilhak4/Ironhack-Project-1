@@ -9,6 +9,9 @@ body {
   margin: 0;
   padding: 0;
 }
+/* Background: make into a textured look */
+/* Animations: fade in */
+/* Start Screen: In middle put a gif or pic or something symbolic of strength */
 
 #main-container {
   display: flex;
@@ -16,8 +19,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   height: calc( 100vh - 100px);
-  background: rgb(174, 177, 183);
-  color: white;
+  background: rgb(126, 129, 133);
   flex-direction: column;
 }
 
@@ -27,9 +29,8 @@ body {
   justify-content: space-around;
   width: 25%;
   height: 20%;
-  border: 1px black solid;
+  border: 1px rgb(0, 0, 0) solid;
 }
-
 
 #main-header {
   display: flex;
@@ -37,13 +38,14 @@ body {
   align-items: center;
   height: 100px;
   background: rgb(174, 177, 183);
-  color: white;
 }
+/* Timer */
 
 #header-left {
   display: flex;
   justify-content: center;
-  flex-grow: 1
+  flex-grow: 1;
+
 }
 
 #header-center {
@@ -51,24 +53,41 @@ body {
   justify-content: center;
   flex-grow: 2;
 }
+/* 7 turn counter */
 
 #header-right {
   display: flex;
   justify-content: center;
   flex-grow: 1;
 }
+/* Font: make it have sharper edges */
 
  h1 {
   font-size: 4em;
+  color: whitesmoke;
 }
+/* Animations: make button pop out, change color slowly */
 
 #btn-start {
   height: 75px;
   width: 125px;
   margin-top: 300px;
   font-size: 1.75em;
+  border-radius: 20%;
+  background-color: azure;
 }
 
 .hidden {
-  opacity: 0.1;
+  opacity: 0.05;
+}
+/* Animations: make button pop out, change color slowly */
+
+#btn-restart {
+  height: 75px;
+  width: 125px;
+  margin-top: 300px;
+  font-size: 1.75em;
+  border-radius: 20%;
+  background-color: indianred;
+  color: thistle;
 }
