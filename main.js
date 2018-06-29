@@ -1,6 +1,12 @@
 'use strict'
-
-
+//----------VIDEO CODE----------//
+var video = document.querySelector('video');
+navigator.mediaDevices.getUserMedia({video:true, audio:false})
+  .then(function(mediaStream){
+    window.stream = mediaStream;
+    video.src = URL.createObjectURL(mediaStream);
+    video.play();
+});
 function main() {
   var container = null;
   var button = null;
@@ -9,8 +15,8 @@ function main() {
   var removeDivs = null;
   var restartButton = null;
   var resultText = null;
-  var gif = null;
-  // ---------- SPLASH SCREEN ---------- //
+  var resultGif = null; 
+   // ---------- SPLASH SCREEN ---------- //
 
   function buildSplash() {
     container = document.getElementById('main-container');
@@ -31,7 +37,7 @@ function main() {
     container.remove();
     buildGame();
   }
-
+  // ----------try to DOM gif onto container----------//
   // function keepBuilding() {
   //   container = document.getElementById('gif-win');
   //   img = document.createElement('img');
@@ -50,7 +56,7 @@ function main() {
   
 
   function playGame() {
-    game = new Game(endGame);
+    game = new Game(endGame, handleCardClick);
     game.start();
     var cardsElements = document.querySelectorAll('#main-container div');
     cardsElements.forEach(function (card) {
@@ -69,12 +75,12 @@ function main() {
 
   
   // ---------- GAME OVER SCREEN ---------- //
-  //If webcam not possible, make end screen a gif of a loss, if win, gif of a winner.
   function endGame(win){
     console.log('ended')
     game = null;
     buildGameOver(win);
   }
+
 
   function buildGameOver(win) {
     resultText = document.createElement('h3')
@@ -84,15 +90,15 @@ function main() {
       resultText.innerText = 'So sorry, you lost!'
     }
     
-    resultGif = document.createElement('img')
-    if (win) {
-      var gif = document.getElementById('gif-win');
-      var img = document.createElement('img');
-      img.setAttribute('src', '/home/lilhak4/2018-06/Project-1/Project/Ironhack-Project-1/images/giphy.gif');
-      gif.appendChild(img);
-    } else {
-    
-    }
+    // resultGif = document.createElement('img')
+    // if (win) {
+      
+    // } else {
+    //   var gif = document.getElementById('gif-win');
+    //   var img = document.createElement('img');
+    //   img.setAttribute('src', '/home/lilhak4/2018-06/Project-1/Project/Ironhack-Project-1/images/gif-men-in-black.gif');
+    //   gif.appendChild(img);
+    // }
     
     document.getElementById('main-container').remove();
     container = document.createElement('div');

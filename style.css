@@ -160,3 +160,18 @@ h3 {
   80%{-webkit-transform:scale(1.2)}
     to{-webkit-transform:scale(1)}
 }
+
+/* ----------WEBCAM---------- */
+
+.container {
+  margin: 0 auto;
+  width: 600px;
+  height: 450px;
+  border: 5px #203 solid;
+}
+
+#webcam {
+  width: 600px;
+  height: 450px;
+  background-color: #666
+}

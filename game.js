@@ -1,6 +1,6 @@
 'use strict'
 
-function Game(cb) {
+function Game(cb, handleCardClick) {
   this.callback = cb;
 
   this.turns = 7;
@@ -9,11 +9,12 @@ function Game(cb) {
   this.cards = null;
   this.timerNode = document.getElementById('header-right');
   this.win = false;
+  this.handleCardClick = handleCardClick
 
 }
 
 Game.prototype.start = function() {
-  this.cards = new Cards();
+  this.cards = new Cards(this.handleCardClick);
   this.cards.buildGrid();
   this.time()
 }
@@ -36,7 +37,6 @@ Game.prototype.saveClickedCard = function(card) {
 }
 
 //----------TIMER----------//
-//starts when click on a div. when hits zero, goes to game over screen 
 
 Game.prototype.time = function () {
   // time = 60;

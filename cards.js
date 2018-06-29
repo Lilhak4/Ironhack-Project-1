@@ -1,10 +1,11 @@
 'use strict';
 
-function Cards() {
+function Cards(cb) {
   this.array = [];
   this.pickedCards = [];
   this.pairsClicked = 0;
   this.pairGuessed = 0;
+  this.cb = cb
 }
 
 Cards.prototype.buildGrid = function() {
@@ -39,7 +40,7 @@ Cards.prototype.checkIfPair = function() {
     this.pairGuessed += 1;
     this.pairsClicked += 1;
     this.resetPairsClicked();
-    this.handleRightPair();
+    this.handleRightPair(firstCard, secondCard);
     return true;
   } else {
     this.pairsClicked += 1
@@ -49,7 +50,6 @@ Cards.prototype.checkIfPair = function() {
   }
 }
 
-// Helper Functions
 
 
 Cards.prototype.pickCard = function(card) {
@@ -70,8 +70,11 @@ Cards.prototype.shuffle = function(cards) {
   return cards;
 }
 
-Cards.prototype.handleRightPair = function() {
+Cards.prototype.handleRightPair = function(fc, sc) {
   // remove event listener
+  console.log(fc, sc)
+  fc.removeEventListener('click', this.cb);
+  sc.removeEventListener('click', this.cb);
 
 }
 
