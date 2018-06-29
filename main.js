@@ -1,12 +1,6 @@
 'use strict'
 //----------VIDEO CODE----------//
-var video = document.querySelector('video');
-navigator.mediaDevices.getUserMedia({video:true, audio:false})
-  .then(function(mediaStream){
-    window.stream = mediaStream;
-    video.src = URL.createObjectURL(mediaStream);
-    video.play();
-});
+
 function main() {
   var container = null;
   var button = null;
@@ -15,7 +9,8 @@ function main() {
   var removeDivs = null;
   var restartButton = null;
   var resultText = null;
-  var resultGif = null; 
+  var resultGif = null;
+  var video = null;
    // ---------- SPLASH SCREEN ---------- //
 
   function buildSplash() {
@@ -83,6 +78,15 @@ function main() {
 
 
   function buildGameOver(win) {
+    video =document.createElement('video');
+    video.setAttribute('id', 'webcam')
+    video.setAttribute('autoplay', 'true')
+    navigator.mediaDevices.getUserMedia({video:true, audio:false})
+    .then(function(mediaStream){
+    window.stream = mediaStream;
+    video.src = URL.createObjectURL(mediaStream);
+    video.play();
+    });
     resultText = document.createElement('h3')
     if (win) {
       resultText.innerText = 'Congratulations! You are a  winner!'
@@ -108,6 +112,7 @@ function main() {
     restartButton.setAttribute('id', 'btn-restart');
     restartButton.innerText = 'Restart';
     container.appendChild(resultText)
+    container.appendChild(video)
     container.appendChild(restartButton)
     document.body.appendChild(container);
     
@@ -118,6 +123,7 @@ function main() {
     restartButton.removeEventListener('click', handleRestartClick);
     restartButton.remove();
     resultText.remove();
+    video.remove
     buildSplash();
   }
 
