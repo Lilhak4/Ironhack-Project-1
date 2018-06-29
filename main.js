@@ -123,7 +123,7 @@ function main() {
     restartButton.removeEventListener('click', handleRestartClick);
     restartButton.remove();
     resultText.remove();
-    video.remove
+    video.remove();
     buildSplash();
   }
 
